@@ -1,4 +1,5 @@
 AdminMenu is a powershell driven WPF menu geared for IT professionals
+
 Copyright (C) 2016 PowershellCrack.com. Richard Tracy
 
 This program is free software: you can redistribute it and/or modify
