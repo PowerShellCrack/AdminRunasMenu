@@ -1,3 +1,14 @@
+# Admin Run-As Menu 
+I developed a PowerShell driven Admin Utility menu (using the latest WPF technology and Mahapps theme) that is highly customizable.
+
+![Alt_text](http://4.bp.blogspot.com/-Qs89EvFyqd8/WC0siMzc03I/AAAAAAAAD90/_-CsNB0sZHUmspoOxROR9JMb8MrL6FpSgCK4B/s1600/adminmenu_creds.png)
+
+![Alt_text](http://2.bp.blogspot.com/-tYgUvZ8pMfE/WC0teSKRvWI/AAAAAAAAD-E/aV9tXaICpxgizd--Du6FKPwV7s3jgPqpwCK4B/s1600/adminmenu_tab2.png)
+
+![Alt_text](http://3.bp.blogspot.com/-dgWB7g6VSvU/WC0tjZ9WMyI/AAAAAAAAD-k/3R-a8ky_BF0aFIJSuNaII-sV09IAdOT7QCK4B/s1600/adminmenu_tab6.png)
+
+
+# EULA
 AdminMenu is a powershell driven WPF menu geared for IT professionals
 
 Copyright (C) 2016 PowershellCrack.com. Richard Tracy
