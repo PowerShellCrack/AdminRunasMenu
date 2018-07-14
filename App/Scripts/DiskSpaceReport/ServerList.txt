@@ -1,0 +1,19 @@
+SRV0110, Finance SQL server
+SQL005, North Clinical Cluster
+SRV0124, EMR Main Database server
+SRV0128. HP Digital Server
+AP0081, Central Application Server
+EX002, Exchange Server 02
+APP250, XML Processing Server
+SRV092, Pre-prod Test Environment for Intranet
+SRV0079, Radiology Database Server
+SRV0129, Data Warehouse Analytics for Internet Usage
+SQL002, SharePoint SQL Server
+SRV0110, HR SQL server
+SRV0117, ETL Server for SSIS Process
+WEB0035, Web Services and Team Foundation Server
+APP001, In-house Imaging Archive Servers
+FILE002, File server Image Archive
+APP305, VMWare Host Server
+WEB0017, Customer Care Web Server
+WEB0826, Employee Imaging Archive Server
