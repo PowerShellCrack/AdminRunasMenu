@@ -161,7 +161,6 @@ Start-Log -FilePath "$env:LocalAppData\AdminMenu\Logs\$(Get-Date -Format yyyyMMd
 ## Variables: Script Name and Script Paths
 [string]$scriptPath = $MyInvocation.MyCommand.Definition
 [string]$scriptName = [IO.Path]::GetFileNameWithoutExtension($scriptPath)
-[string]$scriptFileName = Split-Path -Path $scriptPath -Leaf
 [string]$scriptRoot = Split-Path -Path $scriptPath -Parent
 [string]$invokingScript = (Get-Variable -Name 'MyInvocation').Value.ScriptName
 
@@ -181,17 +180,17 @@ Else {
 [string]$XamlPath = Join-Path -Path $scriptRoot -ChildPath 'Resources'
 [string]$ModulesPath = Join-Path -Path $scriptRoot -ChildPath 'Modules'
 [string]$UtilPath = Join-Path -Path $scriptRoot -ChildPath 'Utilities'
+[string]$ConfigPath = Join-Path -Path $scriptRoot -ChildPath 'Configs'
+[string]$MenuScriptsPath = Join-Path -Path $scriptRoot -ChildPath 'Scripts'
 
 # When Using Executable Command Line
 If ($ConfigCommandLine){
     [string]$ConfigFile = Join-Path -Path $scriptRoot -ChildPath $ConfigCommandLine
 }
 Else{
-    [string]$ConfigFile = Join-Path -Path $scriptRoot -ChildPath 'AdminMenu.ps1.config'
+    [string]$ConfigFile = Join-Path -Path $ConfigPath -ChildPath 'AdminMenu.ps1.config'
 }
-[string]$NameFile = Join-Path -Path $scriptRoot -ChildPath 'AdminMenu.ps1.names'
-
-[string]$appAuthor = 'Richard Tracy'
+[string]$NameFile = Join-Path -Path $ConfigPath -ChildPath 'AdminMenu.prereqs'
 #=======================================================
 # PARSE CONFIG FILE
 #=======================================================
@@ -206,6 +205,7 @@ Else{
 [Xml.XmlElement]$xmlMenuOptions = $xmlConfig.Menu_Options
 [boolean]$AppOptionRequireAdmin = [boolean]::Parse($xmlMenuOptions.Option_RequireAdmin)
 [boolean]$AppOptionRSATCheck = [boolean]::Parse($xmlMenuOptions.Option_RSATCheck)
+[boolean]$AppPrereqCheck = [boolean]::Parse($xmlMenuOptions.Option_PrereqCheck)
 [boolean]$AppOptionDebugeMode = [boolean]::Parse($xmlMenuOptions.Option_DebugMode)
 [string]$AppOptionAccent = $xmlMenuOptions.Option_Accent
 [string]$AppOptionTheme = $xmlMenuOptions.Option_Theme
@@ -224,8 +224,8 @@ Else{
 
 #check if remote config will be used and path is accessible
 If (($AppUseRemoteConfig) -and (Test-Path $AppRemotePath) -and (!$ForceLocal)){
-    [string]$remoteConfig = Join-Path -Path $AppRemotePath -ChildPath 'AdminMenu.ps1.config' -ErrorAction SilentlyContinue
-    [string]$remoteNames = Join-Path -Path $AppRemotePath -ChildPath 'AdminMenu.ps1.names' -ErrorAction SilentlyContinue
+    [string]$remoteConfig = Join-Path -Path $AppRemotePath -ChildPath '\Configs\AdminMenu.ps1.config' -ErrorAction SilentlyContinue
+    [string]$remoteNames = Join-Path -Path $AppRemotePath -ChildPath '\Configs\AdminMenu.prereqs' -ErrorAction SilentlyContinue
     If (-not (Test-Path $remoteConfig -ErrorAction SilentlyContinue) -and (-not (Test-Path $remoteNames -ErrorAction SilentlyContinue)) ){
         If ($AppOptionDebugeMode){Write-Log -Message "Remote config files were not found at: $AppRemotePath; local config will be processed instead" -Severity 2 -OutputHost}
         [boolean]$AppUseRemoteConfig = $False
