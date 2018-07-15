@@ -1,5 +1,0 @@
-computer01
-workstation02
-Serverweb01
-ServerSQL01
-Router01
